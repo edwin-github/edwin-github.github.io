@@ -34,7 +34,7 @@ $(function() {
 		var idx
  
   		it('URL are defined', function() {
-			for( i= 0; i < allFeeds.length; i++) {
+			for( idx= 0; idx < allFeeds.length; idx++) {
 		        expect(allFeeds[idx].url).toBeDefined();
 		        expect(allFeeds[idx].url.length).not.toBe(0);
 	        	}
@@ -46,7 +46,7 @@ $(function() {
          */
  
   		it('Name are defined', function() {
-	  		for( i= 0; i < allFeeds.length; i++) {	
+	  		for( idx= 0; idx< allFeeds.length; idx++) {	
   				expect(allFeeds[idx].name).toBeDefined();
 		        expect(allFeeds[idx].name.length).not.toBe(0);
 	        	}	
@@ -62,8 +62,9 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
+         
 		it('element is hidden by default', function() {
-			expect('body').toBe('menu-hidden');
+			expect($('body').attr('class')).toBe('menu-hidden');
 		});
 		
          /* TODO: Write a test that ensures the menu changes
@@ -74,9 +75,9 @@ $(function() {
        it('changes visibility when the menu icon is clicked',function() {
             var menu_btn = $('.menu-icon-link');
             menu_btn.click();
-            expect('body').not.toBe('menu-hidden');
+            expect($('body').attr('class')).not.toBe('menu-hidden');
             menu_btn.click();
-            expect('body').toBe('menu-hidden');
+            expect($('body').attr('class')).toBe('menu-hidden');
         });
     });
 
