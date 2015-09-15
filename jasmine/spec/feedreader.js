@@ -74,6 +74,7 @@ $(function() {
           */
        it('changes visibility when the menu icon is clicked',function() {
             var menu_btn = $('.menu-icon-link');
+            // Check that the menu displays after clicking the menu button once
             menu_btn.click();
             expect($('body').attr('class')).not.toBe('menu-hidden');
             menu_btn.click();
@@ -93,9 +94,7 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
          beforeEach(function(done) {
-			loadFeed(0, function() {
-				done();
-			});
+			loadFeed(0, done);
 		});
 		
 		it('.feed contains .entry element', function(done) {
@@ -110,24 +109,22 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        var oldContainer, newContainer;
+        var oldContainer;
         beforeEach(function(done) {
-	        oldContainer = $('.feed').text();
-            loadFeed(1,function(){
-	            newContainer = $('.feed').text();
-                done();
-            });
+        	loadFeed(0,function(){
+        	     oldContainer = $('.feed').text();
+            	     loadFeed(1,done);
+	        });
          });
 
         afterEach(function(done) {
-            loadFeed(0,function(){
-                done();
-            });
+            loadFeed(0,done);
          });
          
-		it('container has changed', function(done) {
+		
+	it('container has changed', function(done) {
             //compare old and new
-            expect(oldContainer).not.toBe(newContainer);
+            expect($('.feed').text()).not.toBe(oldContainer);
             done();
         });
         
