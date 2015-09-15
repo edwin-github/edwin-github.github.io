@@ -97,7 +97,7 @@ $(function() {
 		loadFeed(0, done);
 		});
 		
-	it('.feed contains .entry element', function(done) {
+	it('.feed contains an .entry element', function(done) {
 		expect($('.feed .entry').length).not.toBe(0)
 		done();
 	});
