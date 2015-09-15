@@ -11,7 +11,7 @@ handling and DOM manipulation.
 
 
 ## Tests Suites and Test cases
-Tests are grouped in Test Suites and each test suite icludes logically related test cases.
+Tests are grouped into Test Suites and includes logically related test cases.
 1) RSS Feeds - to test the validity of feed array object.
 2) The Menu -  to test the behavior of the menu when initialized and when it is clicked.
 3) Initial Entries - to test the initial load of the loadFeed function creating a single 
